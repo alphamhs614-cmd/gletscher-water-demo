@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GLETSCHER – Eiskaltes Quellwasser (Konzept-Entwurf)</title><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--hero:#12b5e3;--hero2:#0b7fb8;--herobg:radial-gradient(120% 90% at 50% 40%,#38d0f2,#0f9fd6 55%,#0a74b0);--glow:rgba(255,255,255,.35);--nav:#05223f;--head:#ffffff;--ink:#05223f;--dark:#04142a;--light:#eaf8ff;--acc:#5fe1ff;--bright:#eaf8ff;--blue:#0a2a57}
+*{box-sizing:border-box;margin:0;padding:0}html{overflow-x:clip;background:var(--hero)}body{font-family:Inter,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.H{font-family:Anton,Impact,sans-serif;text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 28px;transition:background .3s}
+nav.sc{background:color-mix(in srgb,var(--dark) 70%,transparent);backdrop-filter:blur(10px)}
+.pills{display:flex;gap:8px}.pills a{padding:9px 16px;border-radius:99px;border:1.5px solid var(--nav);color:var(--nav);font-weight:600;font-size:13px;transition:.25s}.pills a:hover{background:var(--nav);color:var(--hero)}
+.logo{font-family:Anton;font-size:30px;letter-spacing:.06em;color:var(--nav);display:flex;align-items:center;gap:10px}.logo svg{width:28px;height:28px}
+.icons{display:flex;gap:10px;justify-self:end}.icons span{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--nav);display:grid;place-items:center;color:var(--nav)}.icons svg{width:18px;height:18px}
+#hero{height:620vh;position:relative;background:var(--herobg)}
+.stick{position:sticky;top:0;height:100vh;overflow:hidden}
+.wm{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22180%22%20height%3D%22180%22%20viewBox%3D%220%200%20180%20180%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.2%22%3E%3Cpath%20d%3D%22M40%2020v40M23%2030l34%2020M57%2030%2023%2050%22/%3E%3Cpath%20d%3D%22M130%20100s16%2018%2016%2030a16%2016%200%200%201-32%200c0-12%2016-30%2016-30z%22/%3E%3Cpath%20d%3D%22M20%20150l20-30%2012%2016%208-10%2020%2024z%22/%3E%3C/svg%3E");background-size:180px;opacity:.13}
+.glow{position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 52%,var(--glow),transparent 70%)}
+#gl{position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
+.beat{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:3;text-align:center;padding:0 4vw;pointer-events:none}
+.beat .ln{overflow:hidden;display:block}.beat .ln>span{display:block}
+.beat h1,.beat h2{font-size:clamp(64px,13.5vw,230px);color:var(--head)}
+.beat .sub{font-family:Anton;font-size:clamp(20px,2.4vw,34px);color:var(--nav);letter-spacing:.12em;margin-top:14px}
+.beat.l{text-align:left}.beat.r{text-align:right}
+.b4{top:auto;bottom:7vh;transform:none;display:flex;justify-content:space-between;align-items:flex-end;text-align:left}
+.b4 p{max-width:340px;font-size:16px;line-height:1.55;color:var(--nav);font-weight:500}
+.ri{display:flex;gap:12px}.ri div{width:76px;height:76px;border-radius:50%;background:var(--nav);color:var(--hero);display:grid;place-items:center;text-align:center;font-size:10px;font-weight:800;letter-spacing:.04em;line-height:1.1}.ri svg{width:24px;height:24px;margin:0 auto 3px}
+.scrollhint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:6;color:var(--nav);font-size:12px;letter-spacing:.2em;font-weight:600}
+section{position:relative}
+#s2{background:var(--dark);color:var(--light);padding:14vh 6vw;display:grid;grid-template-columns:1.1fr 1fr;gap:5vw;min-height:100vh;z-index:2}
+.bul{list-style:none;display:grid;gap:18px;margin-bottom:6vh}.bul li{display:flex;gap:14px;align-items:center;font-weight:600;font-size:15px}.bul i{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--acc);display:grid;place-items:center;color:var(--acc);flex:none}.bul svg{width:20px}
+.no{font-size:clamp(56px,8.4vw,150px)}.no em{font-style:normal;color:var(--acc)}.no span{display:block}
+.cards{position:relative;height:120vh}.card{position:sticky;top:14vh;height:70vh;width:min(420px,90%);margin-left:auto;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.card img{width:100%;height:100%;object-fit:cover}.card:nth-child(2){margin-right:24px;margin-top:4vh}.card:nth-child(3){margin-right:48px;margin-top:4vh}
+.card b{position:absolute;left:18px;bottom:16px;background:var(--light);color:var(--dark);padding:7px 14px;border-radius:99px;font-size:12px}
+#s3{background:var(--bright);color:var(--dark);display:grid;grid-template-columns:1.2fr 1fr;gap:5vw;align-items:center;padding:14vh 6vw;min-height:110vh}
+.trad{font-size:clamp(70px,10.5vw,190px);color:var(--dark)}.trad em{font-style:normal;color:var(--hero2)}
+#s3 p{max-width:460px;margin-top:28px;font-size:17px;line-height:1.6}
+.tall{height:82vh;border-radius:28px;overflow:hidden}.tall img{width:100%;height:115%;object-fit:cover}
+#s4{background:var(--blue);color:var(--light);padding:14vh 6vw}
+#s4 h3{font-size:clamp(48px,7vw,120px);margin-bottom:6vh}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.gal figure{aspect-ratio:1;border-radius:20px;overflow:hidden;position:relative}.gal img,.wide img{width:100%;height:100%;object-fit:cover;transition:transform .8s}.gal figure:hover img{transform:scale(1.06)}
+figcaption{position:absolute;left:14px;bottom:12px;font-weight:700;font-size:13px;background:rgba(0,0,0,.45);padding:6px 12px;border-radius:99px;backdrop-filter:blur(6px)}
+.wide{margin-top:22px;height:48vh;border-radius:22px;overflow:hidden;position:relative}.wide .H{position:absolute;left:4vw;bottom:5vh;font-size:clamp(44px,7vw,120px);color:#fff;text-shadow:0 6px 40px rgba(0,0,0,.4)}
+#s5{background:var(--herobg);color:var(--head);padding:22vh 6vw 16vh;overflow:hidden;min-height:105vh}
+#s5 .wm{opacity:.1}.cta{position:relative;z-index:2;max-width:62vw}
+.cta .ic{width:72px;height:72px;border-radius:50%;background:var(--nav);color:var(--hero);display:grid;place-items:center;margin-bottom:26px}.cta .ic svg{width:34px}
+.cta h3{font-size:clamp(76px,12vw,220px)}.tag{display:inline-block;margin:26px 0 30px;padding:7px 14px;border:1.5px solid var(--nav);color:var(--nav);border-radius:99px;font-size:13px;font-weight:700;letter-spacing:.1em}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--nav);color:var(--hero);font-weight:800;padding:18px 34px;border-radius:99px;font-size:17px;border:0;cursor:pointer}
+.giant{position:absolute;right:-10vw;top:-12vh;width:min(70vw,980px);z-index:1;pointer-events:none;filter:drop-shadow(0 40px 60px rgba(0,0,0,.35))}
+#s6{background:var(--bright);color:var(--dark);padding:16vh 6vw;display:grid;grid-template-columns:1.3fr 1fr;gap:5vw;align-items:center}
+#s6 h3{font-size:clamp(46px,6vw,104px)}#s6 p{margin:20px 0 34px;font-size:17px;max-width:520px;line-height:1.6}
+.mail{display:flex;border-bottom:2px solid var(--dark);max-width:560px}.mail input{flex:1;background:none;border:0;font:500 18px Inter;padding:14px 0;outline:0;color:var(--dark)}.mail button{background:var(--dark);color:var(--bright);border:0;border-radius:99px;padding:12px 24px;font-weight:700;margin-bottom:8px;cursor:pointer}
+.ok{margin-top:14px;font-weight:600;color:var(--hero2);min-height:22px}
+.pcard{background:var(--herobg);border-radius:28px;padding:26px;box-shadow:0 40px 80px rgba(0,0,0,.25);animation:fl 5s ease-in-out infinite;color:var(--head);max-width:400px;justify-self:center;width:100%}
+.pcard img{width:100%;aspect-ratio:1;object-fit:contain}.pcard .row{display:flex;justify-content:space-between;align-items:end;margin-top:6px}.pcard .H{font-size:34px}.pcard small{color:var(--nav);font-weight:700}
+@keyframes fl{50%{transform:translateY(-16px) rotate(-1.5deg)}}
+footer{background:var(--dark);color:var(--light);padding:9vh 6vw 5vh}
+.fbig{font-size:clamp(70px,16vw,280px);color:var(--acc);opacity:.9}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4vw;margin-top:5vh;font-size:14px;line-height:1.7;opacity:.85}
+.cred{margin-top:5vh;font-size:11px;opacity:.55;line-height:1.6}
+.rv{opacity:0;transform:translateY(40px)}
+@media(max-width:820px){
+ nav{padding:12px 14px;grid-template-columns:1fr auto}.pills{display:none}.logo{font-size:22px}.icons span{width:34px;height:34px}.icons span:nth-child(1){display:none}
+ .beat h1,.beat h2{font-size:clamp(54px,17vw,120px)}.b4{flex-direction:column;align-items:center;gap:16px;text-align:center;bottom:5vh}.b4 p{font-size:14px}.ri div{width:64px;height:64px;font-size:9px}
+ #s2,#s3,#s6{grid-template-columns:1fr}.cards{height:auto;display:flex;gap:14px;overflow-x:auto}.card{position:relative;top:0;height:420px;min-width:260px;margin:0!important}
+ .tall{height:60vh}.gal{grid-template-columns:1fr}.cta{max-width:100%}.giant{width:120vw;right:-40vw;top:-6vh;opacity:.55}.fg{grid-template-columns:1fr}
+}
+</style></head><body>
+<nav id="nav"><div class="pills"><a href="#s2">Shop</a><a href="#s3">Herkunft</a><a href="#s4">Galerie</a><a href="#s6">Kontakt</a></div>
+<a class="logo" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg>GLETSCHER</a>
+<div class="icons"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></span></div></nav>
+<section id="hero"><div class="stick"><div class="wm"></div><div class="glow"></div>
+<div class="beat b1"><h1 class="H"><span class="ln"><span>EISKALT.</span></span><span class="ln"><span>KLAR.</span></span></h1><div class="sub ln"><span>QUELLWASSER AUS DEM GLETSCHER</span></div></div>
+<div class="beat b2 l"><h2 class="H"><span class="ln"><span>AUS DEM</span></span><span class="ln"><span>EWIGEN EIS</span></span></h2></div>
+<div class="beat b3 r"><h2 class="H"><span class="ln"><span>PUR WIE AM</span></span><span class="ln"><span>URSPRUNG</span></span></h2></div>
+<div class="beat b4"><p class="ln"><span>Gefiltert durch 10.000 Jahre alten Fels, abgefüllt direkt an der Quelle – und so kalt serviert, wie es aus dem Berg kommt.</span></p><div class="ri"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg>MINERAL-<br>ARM</div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg>4 °C<br>SERVIERT</div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19H4l3-5M17 19h3l-3-5M9 5l3-2 3 2M7 14l-3-5 4-1M17 14l3-5-4-1"/></svg>100 %<br>RECYCELBAR</div></div></div>
+<div class="beat b5"><h2 class="H"><span class="ln"><span>WAS STECKT</span></span><span class="ln"><span>DRIN?</span></span></h2></div>
+<canvas id="gl"></canvas><div class="scrollhint">SCROLLEN ↓</div></div></section>
+<section id="s2"><div><ul class="bul rv"><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 10 8l4 6 2-3 5 9z"/></svg></i>Quelle auf 2.400 m Höhe</li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></i>Natürlich weich & mineralarm</li><li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19H4l3-5M17 19h3l-3-5M9 5l3-2 3 2M7 14l-3-5 4-1M17 14l3-5-4-1"/></svg></i>Flasche aus 100 % rPET</li></ul><h3 class="H no rv"><span>NULL <em>ZUCKER</em></span><span>NULL ZUSÄTZE</span><span>NULL KOMPRO-</span><span>MISSE</span></h3></div>
+<div class="cards"><div class="card"><img src="img/l1.jpg" alt=""><b>Unterwegs</b></div><div class="card"><img src="img/l2.jpg" alt=""><b>Am Gletscher</b></div><div class="card"><img src="img/l3.jpg" alt=""><b>Pures Eis</b></div></div></section>
+<section id="s3"><div><h3 class="H trad rv">TRADITION<br>& <em>REINHEIT</em></h3><p class="rv">Seit Generationen fließt das Wasser aus derselben Quelle im Hochgebirge. Wir füllen es so ab, wie die Natur es macht: klar, kalt und ohne Umwege.</p></div><div class="tall rv"><img src="img/t1.jpg" alt=""></div></section>
+<section id="s4"><h3 class="H rv">DIE HEIMAT DER KÄLTE</h3><div class="gal"><figure class="rv"><img src="img/g1.jpg" alt=""><figcaption>Die Quelle</figcaption></figure><figure class="rv"><img src="img/g2.jpg" alt=""><figcaption>Hochgebirgssee</figcaption></figure><figure class="rv"><img src="img/g3.jpg" alt=""><figcaption>Eiskalt serviert</figcaption></figure></div>
+<div class="wide rv"><img src="img/w1.jpg" alt=""><div class="H">JÖKULL · EIS · WASSER</div></div></section>
+<section id="s5"><div class="wm"></div><img class="giant" id="giant" alt=""><div class="cta"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></div><h3 class="H rv">HOL DIR<br>DIE KÄLTE</h3><div class="tag">6 × 0,75 L · GRATIS VERSAND</div><br><button class="btn" onclick="this.textContent='✓ Demo – kein echter Shop'">Jetzt kaufen →</button></div></section>
+<section id="s6"><div><h3 class="H rv">BLEIB COOL.</h3><p>Abonniere unseren Newsletter für neue Editionen, Quell-Geschichten und 10 % auf deine erste Kiste.</p><form class="mail" onsubmit="event.preventDefault();document.getElementById('ok').textContent='Danke! (Demo – es wurde nichts gesendet.)'"><input type="email" required placeholder="deine@email.de"><button>Anmelden</button></form><div class="ok" id="ok"></div></div>
+<div class="pcard"><img id="card" alt=""><div class="row"><div><div class="H">GLETSCHER</div><small>0,75 L · Still</small></div><button class="btn" style="padding:12px 20px;font-size:14px">2,90 €</button></div></div></section>
+<footer><div class="H fbig">GLETSCHER</div><div class="fg"><div><b>Unverbindlicher Konzept-Entwurf (kein Kundenprojekt)</b><br>GLETSCHER ist eine fiktive Marke, erfunden für diese Design-Demo. Alle Produkte, Preise und Texte sind frei erfunden. Kein Shop, keine Bestellung möglich.</div><div>Design & Umsetzung<br><b>Mohammad</b></div><div>Shop · Herkunft<br>Galerie · Kontakt</div></div>
+<div class="cred">Fotos (Wikimedia Commons, freie Lizenzen): Hiker resting drinking water in mountains.jpg – U.S. Fish and Wildlife Service – Public domain · Mendenhall Glacier, Juneau.jpg – Kyson Dana – CC0 · IceBlockNearJoekullsarlon.jpg – Andreas Tille – CC BY-SA 4.0 · Spring water in the mountains.jpg – Tarin2609 – CC BY-SA 4.0 · Lake near Sunnig Grat summit.JPG – Simon Koopmann – CC BY-SA 2.5 · Ice-cubes. - Flickr - rawdonfox.jpg – rawdonfox from Leeds, Yorkshire – CC BY 2.0 · Jokulsarlon Panorama.jpg – Ira Goldstein – CC BY-SA 3.0 · Staubbachfall in Lauterbrunnen BE.jpg – JoachimKohler-HB – CC BY-SA 4.0. 3D-Produkt komplett im Code (Three.js) erstellt.</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+window.lenis=new Lenis({lerp:.09});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>document.getElementById('hero').offsetHeight-80));
+// headline beats
+const tl=gsap.timeline({scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom bottom',scrub:.6}});
+const beats=['.b1','.b2','.b3','.b4','.b5'];
+gsap.set('.beat .ln>span',{yPercent:110});gsap.set('.b1 .ln>span',{yPercent:0});
+beats.forEach((b,i)=>{const s=b+' .ln>span';
+ if(i>0)tl.to(s,{yPercent:0,stagger:.08,duration:.5,ease:'power3.out'},i*1.0);
+ if(i<4)tl.to(s,{yPercent:-110,stagger:.06,duration:.45,ease:'power2.in'},i*1.0+.7);});
+gsap.set('.b4 .ri',{opacity:0,y:40});tl.to('.b4 .ri',{opacity:1,y:0,duration:.4},3.05);tl.to('.b4 .ri',{opacity:0,y:-40,duration:.35},3.75);
+tl.to({},{duration:.4});tl.to('.scrollhint',{opacity:0,duration:.2},0);
+window.heroTL=tl;
+gsap.utils.toArray('.rv').forEach(e=>gsap.to(e,{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:e,start:'top 88%'}}));
+gsap.to('.tall img',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'#s3',scrub:true}});
+gsap.fromTo('#giant',{y:120,rotate:8},{y:-40,rotate:-4,ease:'none',scrollTrigger:{trigger:'#s5',scrub:true}});
+</script>
+<script type="module">
+import * as THREE from 'three';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+await document.fonts.load('190px Anton').catch(()=>{});await document.fonts.load('600 46px Inter').catch(()=>{});
+const KIND='bottle', BRAND='GLETSCHER';
+const cv=document.getElementById('gl');
+const R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true,preserveDrawingBuffer:true});
+R.setPixelRatio(Math.min(devicePixelRatio,2));R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.05;R.outputColorSpace=THREE.SRGBColorSpace;
+const scene=new THREE.Scene();const pm=new THREE.PMREMGenerator(R);scene.environment=pm.fromScene(new RoomEnvironment(),.04).texture;
+const cam=new THREE.PerspectiveCamera(30,1,.1,100);cam.position.set(0,0,9);
+scene.add(new THREE.HemisphereLight(0xffffff,0x8a7a70,.9));const fill=new THREE.DirectionalLight(0xfff4ea,1.3);fill.position.set(0,-5,5);scene.add(fill);const key=new THREE.DirectionalLight(0xffffff,2.2);key.position.set(3,5,6);scene.add(key);const rim=new THREE.DirectionalLight(0x9ff0ff,2.5);rim.position.set(-5,2,-4);scene.add(rim);
+const U={t:{value:0}};
+// fresnel rim/frost shell
+function fresnelMat(col,pow,amt,frost){return new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{c:{value:new THREE.Color(col)},p:{value:pow},a:{value:amt},f:{value:frost}},
+vertexShader:`varying vec3 vN;varying vec3 vV;varying vec3 vP;void main(){vec4 w=modelMatrix*vec4(position,1.);vN=normalize(mat3(modelMatrix)*normal);vV=normalize(cameraPosition-w.xyz);vP=position;gl_Position=projectionMatrix*viewMatrix*w;}`,
+fragmentShader:`uniform vec3 c;uniform float p,a,f;varying vec3 vN;varying vec3 vV;varying vec3 vP;float h(vec3 q){return fract(sin(dot(q,vec3(12.9898,78.233,37.719)))*43758.5453);}
+float n(vec3 x){vec3 i=floor(x),g=fract(x);g=g*g*(3.-2.*g);return mix(mix(mix(h(i),h(i+vec3(1,0,0)),g.x),mix(h(i+vec3(0,1,0)),h(i+vec3(1,1,0)),g.x),g.y),mix(mix(h(i+vec3(0,0,1)),h(i+vec3(1,0,1)),g.x),mix(h(i+vec3(0,1,1)),h(i+vec3(1,1,1)),g.x),g.y),g.z);}
+void main(){float fr=pow(1.-abs(dot(normalize(vN),vV)),p);float fz=f*(n(vP*14.)*.6+n(vP*40.)*.4);fz=smoothstep(.45,.9,fz)*f;gl_FragColor=vec4(c*(fr*a+fz*.5),1.);}`})}
+function liquidMat(col,surf,op,level){const m=new THREE.MeshPhysicalMaterial({color:col,roughness:.08,metalness:0,clearcoat:1,transparent:true,opacity:op,side:THREE.DoubleSide,depthWrite:false,envMapIntensity:1.2,emissive:col,emissiveIntensity:.2});
+m.onBeforeCompile=s=>{s.uniforms.uL=level;s.uniforms.uS={value:new THREE.Color(surf)};
+s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 vWP;').replace('#include <project_vertex>','#include <project_vertex>\nvWP=(modelMatrix*vec4(transformed,1.)).xyz;');
+s.fragmentShader=s.fragmentShader.replace('#include <common>','#include <common>\nvarying vec3 vWP;uniform float uL;uniform vec3 uS;').replace('void main() {','void main() {\nif(vWP.y>uL)discard;').replace('#include <dithering_fragment>','#include <dithering_fragment>\nif(!gl_FrontFacing)gl_FragColor=vec4(uS*(.85+.15*sin(vWP.x*9.+vWP.z*7.)),min(1.,gl_FragColor.a+.25));');};return m}
+function glassMats(tint){const back=new THREE.MeshPhysicalMaterial({color:tint,roughness:.03,metalness:0,transparent:true,opacity:.16,side:THREE.BackSide,depthWrite:false,envMapIntensity:1.6,ior:1.5,clearcoat:1});
+const front=new THREE.MeshPhysicalMaterial({color:tint,roughness:.02,metalness:0,transparent:true,opacity:.2,depthWrite:false,envMapIntensity:2.6,ior:1.5,clearcoat:1,clearcoatRoughness:.02,specularIntensity:1});return[back,front]}
+function lathe(pts,seg=96){return new THREE.LatheGeometry(pts.map(p=>new THREE.Vector2(p[0],p[1])),seg)}
+function offsetIn(pts,d){return pts.map(p=>[Math.max(0,p[0]-d),p[1]])}
+function particles(n,col,size,vs){const g=new THREE.BufferGeometry();const s=new Float32Array(n);for(let i=0;i<n;i++)s[i]=Math.random();g.setAttribute('seed',new THREE.BufferAttribute(s,1));g.setAttribute('position',new THREE.BufferAttribute(new Float32Array(n*3),3));
+const m=new THREE.ShaderMaterial({transparent:true,depthWrite:false,uniforms:{t:U.t,o:{value:new THREE.Vector3()},fade:{value:1},c:{value:new THREE.Color(col)},sz:{value:size*R.getPixelRatio()}},
+vertexShader:`attribute float seed;uniform float t,sz;uniform vec3 o;varying float vA;varying float vS;${vs}`,
+fragmentShader:`uniform vec3 c;uniform float fade;varying float vA;varying float vS;void main(){vec2 q=gl_PointCoord-.5;float d=length(q);float a=smoothstep(.5,.0,d);a*=.75+.25*sin(vS*30.+q.x*8.);gl_FragColor=vec4(c,a*vA*fade);}`});
+const p=new THREE.Points(g,m);p.frustumCulled=false;return p}
+const prod=new THREE.Group(),inner=new THREE.Group();prod.add(inner);scene.add(prod);
+const level={value:0};let liqInfo,steam,mist,cubes=[];
+function labelTex(draw,w=2048,h=512){const c=document.createElement('canvas');c.width=w;c.height=h;draw(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t}
+if(KIND==='bottle'){
+ const P=[[0,0],[.42,0],[.53,.03],[.58,.12],[.585,.3],[.57,.42],[.585,.55],[.585,1.6],[.57,1.75],[.585,1.88],[.56,2.02],[.47,2.22],[.33,2.42],[.235,2.56],[.22,2.66],[.24,2.68],[.24,2.72],[.215,2.74]];
+ const [gb,gf]=glassMats(0xd8f3ff);const og=lathe(P);inner.add(new THREE.Mesh(og,gb));const fm=new THREE.Mesh(og,gf);fm.renderOrder=3;inner.add(fm);
+ const sh=new THREE.Mesh(og,fresnelMat(0xd9f6ff,2.2,1.1,.55));sh.scale.setScalar(1.004);sh.renderOrder=6;inner.add(sh);
+ const LP=[[0,.06],[.5,.06],[.555,.14],[.56,.3],[.545,.42],[.56,.55],[.56,1.6],[.545,1.75],[.56,1.88],[.535,2.0],[.45,2.2],[.31,2.4],[0,2.42]];
+ const lm=liquidMat(0xbff0ff,0xe8fbff,.28,level);const lq=new THREE.Mesh(lathe(LP),lm);lq.renderOrder=1;inner.add(lq);
+ liqInfo={c:1.1,up:1.15,side:.32};
+ // cap
+ const capM=new THREE.MeshPhysicalMaterial({color:0x0a2a57,roughness:.32,metalness:.1,clearcoat:.8});
+ const cap=new THREE.Mesh(new THREE.CylinderGeometry(.255,.255,.36,64,1),capM);cap.position.y=2.9;inner.add(cap);
+ const capTop=new THREE.Mesh(new THREE.CylinderGeometry(.24,.255,.03,64),capM);capTop.position.y=3.09;inner.add(capTop);
+ for(let i=0;i<40;i++){const r=new THREE.Mesh(new THREE.BoxGeometry(.018,.3,.02),capM);const a=i/40*Math.PI*2;r.position.set(Math.cos(a)*.258,2.9,Math.sin(a)*.258);r.rotation.y=-a;inner.add(r)}
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(.245,.025,12,64),capM);ring.rotation.x=Math.PI/2;ring.position.y=2.69;inner.add(ring);
+ // label
+ const lt=labelTex((x,w,h)=>{x.clearRect(0,0,w,h);const g=x.createLinearGradient(0,0,0,h);g.addColorStop(0,'rgba(240,250,255,.9)');g.addColorStop(1,'rgba(205,236,250,.9)');x.fillStyle=g;x.fillRect(0,0,w*.55,h);
+  x.fillStyle='#05223f';x.font='bold 190px Anton,Impact';x.textAlign='center';x.fillText(BRAND,w*.275,h*.55);x.font='600 46px Inter,Arial';x.fillText('NATÜRLICHES QUELLWASSER · STILL',w*.275,h*.8);
+  x.fillStyle='#12b5e3';x.fillRect(0,h*.06,w*.55,14);x.fillRect(0,h*.92,w*.55,14);
+  x.strokeStyle='#05223f';x.lineWidth=7;x.beginPath();x.moveTo(w*.21,h*.24);x.lineTo(w*.25,h*.13);x.lineTo(w*.28,h*.2);x.lineTo(w*.31,h*.11);x.lineTo(w*.35,h*.24);x.stroke();});
+ const lab=new THREE.Mesh(new THREE.CylinderGeometry(.592,.592,.95,96,1,true,-Math.PI*.55,Math.PI*2),new THREE.MeshPhysicalMaterial({map:lt,transparent:true,roughness:.35,clearcoat:.6,side:THREE.DoubleSide,depthWrite:false}));lab.position.y=1.05;lab.renderOrder=4;inner.add(lab);
+ // droplets
+ const N=900,dg=new THREE.SphereGeometry(1,12,8),dm=new THREE.MeshPhysicalMaterial({color:0xffffff,roughness:0,transparent:true,opacity:.38,clearcoat:1,envMapIntensity:3.5}),D=new THREE.InstancedMesh(dg,dm,N);const o=new THREE.Object3D();
+ for(let i=0;i<N;i++){const a=Math.random()*Math.PI*2,y=.18+Math.random()*1.75;if(y>.55&&y<1.55&&((a+Math.PI*.55)%(Math.PI*2))<Math.PI*1.1&&Math.random()<.7){i--;continue}const r=.598;o.position.set(Math.cos(a)*r,y,Math.sin(a)*r);const s=.005+Math.pow(Math.random(),4)*.026;o.scale.set(s,s*(1+Math.random()*.6),s*.45);o.rotation.set(0,-a+Math.PI/2,0);o.updateMatrix();D.setMatrixAt(i,o.matrix)}
+ D.renderOrder=7;inner.add(D);
+ inner.position.y=-1.55;
+ // ice cubes + mist (world)
+ const cg=new RoundedBoxGeometry(.5,.5,.5,4,.08);const cm=new THREE.MeshPhysicalMaterial({color:0xffffff,roughness:.05,transparent:true,opacity:.22,clearcoat:1,envMapIntensity:3,depthWrite:false,emissive:0xe4f8ff,emissiveIntensity:.8});
+ [[-1.7,-.9,.4],[1.6,.7,-.3],[1.35,-1.25,.6],[-1.45,1.15,-.5]].forEach((p,i)=>{const c=new THREE.Group();c.add(new THREE.Mesh(cg,cm));const s=new THREE.Mesh(cg,fresnelMat(0xeaffff,1.8,1.2,.35));s.scale.setScalar(1.01);c.add(s);c.position.set(...p);c.userData={p,i};c.rotation.set(i,i*2,i*.5);scene.add(c);cubes.push(c)});
+ mist=particles(140,0xe8f8ff,170,`void main(){float k=fract(t*.05+seed);vec3 p=o+vec3(sin(seed*91.)*1.6+sin(t*.3+seed*9.)*.3,-1.4+k*.9+sin(seed*33.)*.4,cos(seed*51.)*.8);vA=smoothstep(0.,.2,k)*(1.-k)*.18;vS=seed;vec4 mv=modelViewMatrix*vec4(p,1.);gl_PointSize=sz*(.6+k)/-mv.z;gl_Position=projectionMatrix*mv;}`);scene.add(mist);
+}else{
+ const S=1.0,P=[[0,0],[.33,0],[.36,.03],[.37,.1],[.36,.18],[.39,.42],[.38,.62],[.33,.92],[.30,1.12],[.31,1.3],[.36,1.58],[.405,1.82],[.415,1.88]];
+ const IN=[[.415,1.88],[.395,1.84],[.385,1.8],[.345,1.58],[.29,1.3],[.28,1.12],[.31,.92],[.36,.62],[.37,.42],[.345,.2],[.33,.16],[0,.16]];
+ const pts=P.concat(IN);const [gb,gf]=glassMats(0xfff4e0);const og=lathe(pts);inner.add(new THREE.Mesh(og,gb));const fm=new THREE.Mesh(og,gf);fm.renderOrder=3;inner.add(fm);
+ const sh=new THREE.Mesh(lathe(P),fresnelMat(0xffe7c2,2.4,1.0,0));sh.scale.setScalar(1.004);sh.renderOrder=6;inner.add(sh);
+ const gold=new THREE.MeshPhysicalMaterial({color:0xe2b354,metalness:1,roughness:.18,envMapIntensity:1.5});
+ const rimR=new THREE.Mesh(new THREE.TorusGeometry(.41,.012,10,96),gold);rimR.rotation.x=Math.PI/2;rimR.position.y=1.875;inner.add(rimR);
+ const band=new THREE.Mesh(new THREE.TorusGeometry(.297,.008,8,96),gold);band.rotation.x=Math.PI/2;band.position.y=1.12;inner.add(band);
+ const LP=[[0,.17],[.335,.17],[.355,.22],[.36,.42],[.35,.62],[.3,.92],[.272,1.12],[.282,1.3],[.335,1.56],[0,1.56]];
+ const lm=liquidMat(0x4a0c02,0x2a0601,1.0,level);const lq=new THREE.Mesh(lathe(LP),lm);lq.renderOrder=1;inner.add(lq);
+ liqInfo={c:.8,up:.76,side:.12};
+ // saucer
+ const st=labelTex((x,w,h)=>{x.fillStyle='#fbf6ee';x.fillRect(0,0,w,h);const c=w/2;x.strokeStyle='#000';for(let i=0;i<24;i++){x.save();x.translate(c,c);x.rotate(i/24*Math.PI*2);x.fillStyle='#000';x.beginPath();x.ellipse(0,w*.4,w*.025,w*.05,0,0,7);x.fill();x.fillStyle='#d9a441';x.beginPath();x.arc(0,w*.335,w*.012,0,7);x.fill();x.restore()}
+  x.lineWidth=w*.012;x.strokeStyle='#d9a441';x.beginPath();x.arc(c,c,w*.47,0,7);x.stroke();x.beginPath();x.arc(c,c,w*.3,0,7);x.stroke();x.lineWidth=w*.006;x.strokeStyle='#000';x.beginPath();x.arc(c,c,w*.28,0,7);x.stroke();},1024,1024);
+ const SP=[[0,-.12],[.4,-.12],[.42,-.09],[.45,-.06],[.95,.02],[1.02,.09],[1.04,.12],[1.0,.11],[.92,.06],[.45,.0],[.38,0],[0,0]];
+ const sg=lathe(SP,128);{const pos=sg.attributes.position,uv=sg.attributes.uv;for(let i=0;i<pos.count;i++){uv.setXY(i,pos.getX(i)/2.1+.5,pos.getZ(i)/2.1+.5)}}
+ const sau=new THREE.Mesh(sg,new THREE.MeshPhysicalMaterial({map:st,roughness:.18,clearcoat:1,clearcoatRoughness:.05}));inner.add(sau);
+ const srim=new THREE.Mesh(new THREE.TorusGeometry(1.025,.012,8,128),gold);srim.rotation.x=Math.PI/2;srim.position.y=.115;inner.add(srim);
+ // spoon
+ const silver=new THREE.MeshPhysicalMaterial({color:0xdedede,metalness:1,roughness:.12});const sp=new THREE.Group();
+ const hdl=new THREE.Mesh(new THREE.CylinderGeometry(.018,.026,.95,16),silver);hdl.rotation.z=Math.PI/2;hdl.position.x=.5;sp.add(hdl);
+ const bowl=new THREE.Mesh(new THREE.SphereGeometry(.1,24,12,0,Math.PI*2,Math.PI/2,Math.PI/2),silver);bowl.scale.set(1,.35,.7);bowl.position.x=1.02;bowl.rotation.z=Math.PI;sp.add(bowl);
+ sp.position.set(-.2,.09,.62);sp.rotation.set(0,-.35,.1);inner.add(sp);
+ // sugar cubes
+ const sug=new THREE.MeshPhysicalMaterial({color:0xfffdf8,roughness:.85});[[.6,.62],[.72,.42]].forEach(([a,b],i)=>{const m=new THREE.Mesh(new RoundedBoxGeometry(.14,.14,.14,2,.02),sug);m.position.set(a,.1,b);m.rotation.y=i*.6;inner.add(m)});
+ inner.position.y=-.95;inner.scale.setScalar(1.25);
+ steam=particles(90,0xfff3e6,260,`void main(){float k=fract(t*.09+seed);vec3 p=o+vec3(sin(seed*71.)*.18+sin(t*.8+seed*13.+k*5.)*.22*k,k*2.4,cos(seed*37.)*.15+cos(t*.6+seed*7.)*.12*k);vA=smoothstep(0.,.18,k)*pow(1.-k,1.4)*.22;vS=seed;vec4 mv=modelViewMatrix*vec4(p,1.);gl_PointSize=sz*(.35+k*1.3)/-mv.z;gl_Position=projectionMatrix*mv;}`);scene.add(steam);
+}
+// scroll pose
+const kf=[[0,0,0],[-.45,.5,-.35],[-.2,1.4,-1.5708],[-1.5708,2.4,-.3],[-.7,3.2,.75],[-.3,3.6,.35]];
+const pose={x:kf[0][0],y:kf[0][1],z:kf[0][2],off:0},cur={x:0,y:0,z:0};
+const ptl=gsap.timeline({scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom bottom',scrub:1}});
+kf.slice(1).forEach(k=>ptl.to(pose,{x:k[0],y:k[1],z:k[2],duration:1,ease:'power1.inOut'}));
+ptl.to(pose,{off:1,duration:.4,ease:'power1.in'});
+let mx=0,my=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+function size(){const w=cv.clientWidth,h=cv.clientHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();const s=Math.min(1,w/h/0.75);prod.scale.setScalar(s*(w<820?.82:1));}
+addEventListener('resize',size);size();
+const tmp=new THREE.Vector3(),up=new THREE.Vector3();
+function updLevel(){prod.updateMatrixWorld(true);tmp.set(0,liqInfo.c,0);inner.localToWorld(tmp);up.set(0,1,0).transformDirection(inner.matrixWorld);const ws=inner.getWorldScale(new THREE.Vector3()).x;const a=Math.abs(up.y);level.value=tmp.y+THREE.MathUtils.lerp(liqInfo.side,liqInfo.up,a*a)*ws;
+ if(steam){tmp.set(0,1.75,0);inner.localToWorld(tmp);steam.material.uniforms.o.value.copy(tmp);steam.material.uniforms.fade.value=THREE.MathUtils.smoothstep(up.y,.3,.9)*(1-pose.off);}
+ if(mist){mist.material.uniforms.o.value.set(0,prod.position.y,0);mist.material.uniforms.fade.value=1-pose.off;}}
+const clock=new THREE.Clock();
+function frame(){const t=clock.getElapsedTime();U.t.value=t;
+ for(const k of ['x','y','z'])cur[k]+=(pose[k]-cur[k])*.12;
+ prod.rotation.set(cur.x+my*.12,cur.y+mx*.25+Math.sin(t*.5)*.04,cur.z);prod.position.y=pose.off*7+Math.sin(t*1.1)*.05;
+ cubes.forEach(c=>{const p=c.userData.p;c.position.set(p[0]*(1+pose.off*.3),p[1]+Math.sin(t*.8+c.userData.i)*.15+pose.off*7,p[2]);c.rotation.x+=.003;c.rotation.y+=.004;});
+ updLevel();R.render(scene,cam);requestAnimationFrame(frame)}
+// product snapshots for CTA + card
+function snap(rot,camZ,camY,w,h,tgt){const ow=cv.clientWidth,oh=cv.clientHeight;const hide=[...cubes,mist,steam].filter(Boolean);hide.forEach(o=>o.visible=false);
+ R.setSize(w,h,false);cam.aspect=w/h;cam.position.set(0,camY,camZ);cam.lookAt(0,camY,0);cam.updateProjectionMatrix();const os=prod.scale.x;prod.scale.setScalar(1);prod.rotation.set(...rot);prod.position.y=0;updLevel();R.render(scene,cam);
+ document.getElementById(tgt).src=cv.toDataURL('image/png');hide.forEach(o=>o.visible=true);cam.position.set(0,0,9);cam.lookAt(0,0,0);size();}
+snap([-.15,.4,-.5],4.2,1.2,900,900,'giant');snap([0,.35,-.12],8.5,0,700,700,'card');
+frame();
+</script></body></html>
